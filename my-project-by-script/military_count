@@ -1,0 +1,98 @@
+from tkinter import *
+from tkinter import font
+import tkinter.messagebox
+
+
+
+
+window = Tk()
+window.geometry("800x600+750+200")
+def InitTopText():
+    TempFont = font.Font(window, size = 20, weight = 'bold', family = 'Consloas')
+    MainText = Label(window, font = TempFont, text = "[ 군 전역일 계산 ]")
+    MainText.pack()
+    MainText.place(x = 300, y = 10)
+
+def InitSelectlist():
+    global SearchListBox
+    ListBoxScrollbar = Scrollbar(window)
+    ListBoxScrollbar.pack()
+    ListBoxScrollbar.place(x = 50, y = 50)
+
+    TempFont = font.Font(window,size = 15, weight = 'bold', family = 'Consolas')
+    SearchListBox = Listbox(window, font=TempFont, activestyle='none', width=10, height=1, borderwidth=12, relief='ridge',yscrollcommand=ListBoxScrollbar.set)
+    SearchListBox.insert(1, "의경")
+    SearchListBox.insert(2, "해병대")
+    SearchListBox.insert(3, "해군")
+    SearchListBox.insert(4, "공군")
+    SearchListBox.insert(5, "육군")
+
+
+def Plus_day():
+    plus_day = e1.get() + '.' + e2.get() + '.' + e3.get()
+    e4.insert(0, plus_day)
+
+def Clear():
+    e4.delete(0,100)
+
+def enter_case():
+    global e1, e2, e3
+    l1 = Label(window, text="입대년도을  입력하세요.", font='helvetica 10 italic')
+    l1.place(x=50, y=70)
+
+    e1 = Entry(window)
+    e1.place(x=200, y=70)
+
+    l2 = Label(window, text="입  대  월을  입력하세요.", font='helvetica 10 italic')
+    l2.place(x=50, y=100)
+
+    e2 = Entry(window)
+    e2.place(x=200, y=100)
+
+    l3 = Label(window, text="입  대  일을  입력하세요.", font='helvetica 10 italic')
+    l3.place(x=50, y=130)
+
+    e3 = Entry(window)
+    e3.place(x=200, y=130)
+
+def enter_case1():
+    global e4
+    b1 = Button(window, text='확인', command=Plus_day)
+    b1.grid(row=4, column=0)
+
+    l4 = Label(window, text="입대일을 확인하세요.")
+    l4.grid(row=3, column=0)
+
+    e4 = Entry(window)
+    e4.grid(row=3, column=1)
+    e4['bg'] = "pink"
+
+
+
+def enter_case2():
+    global e5
+    b1 = Button(window, text='초기화', command=Clear)
+    b1.grid(row=5, column=0)
+
+
+def main():
+    global e1, e2, e3, e4
+
+    InitTopText()
+    enter_case()
+    enter_case1()
+    enter_case2()
+    #InitSelectlist()
+
+
+
+
+
+
+
+
+
+main()
+window.mainloop()
+
+
