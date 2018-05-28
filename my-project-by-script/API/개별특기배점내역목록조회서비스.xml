@@ -1,0 +1,7 @@
+<OpenAPI_ServiceResponse>
+	<cmmMsgHeader>
+		<errMsg>SERVICE ERROR</errMsg>
+		<returnAuthMsg>HTTP_ERROR</returnAuthMsg>
+		<returnReasonCode>04</returnReasonCode>
+	</cmmMsgHeader>
+</OpenAPI_ServiceResponse>
