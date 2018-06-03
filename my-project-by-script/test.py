@@ -1,5 +1,6 @@
-from urllib import request
-from xml.etree import ElementTree
+
+import urllib.request
+from lxml import etree
 
 
 url = "http://apis.data.go.kr/1300000/mjbJiWon/list?"
@@ -10,17 +11,23 @@ key = "ServiceKey=HLlS60zzsxYZkqh4LVPkBQ60VtdA44bGdv65AfmojamkRl4qu1n1uaCLdJfY5G
 name = "gsteukgiNm"
 url_1 = url + row + page + key
 
-print(url_1)
+data = urllib.request.urlopen(url_1).read()
 
-search_item = input()
-print(search_item)
-response = request.urlopen(url_1).read()
-tree = ElementTree.fromstring(response)
-itemElements = tree.getiterator("item")
-for item in itemElements:
-        name_ = item.find('gtcdNm2')
-        name_ = name_.text
-        if(name_ == search_item):
-            result = item.find("gsteukgiNm")
+filename = "Hospitaldata.xml"
+f = open(filename, "wb")  # 다른 사람들의 예제처럼 "w"만 해서 했더니 에러가 발생
+f.write(data)
+f.close()
 
-print(result.text)
+# 파싱하기
+tree = etree.parse(filename)
+root = tree.getroot()
+
+# 파싱해서얻어올것
+# print(root.findall(''))
+for a in root.findall('.//item'):
+    print("주소:", a.findtext('addr'))
+    print("읍면동 :", a.findtext('emdongNm'))
+    print("전화번호 :", a.findtext('telno'))
+    print("병원이름 :", a.findtext('yadmNm'))
+    print("병원종류 :", a.findtext('clCdNm'))
+    print('----------------------')
