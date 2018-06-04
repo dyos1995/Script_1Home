@@ -22,10 +22,10 @@ def create_world():
 
 
 def main():
-    #create_world()
-    military_count.main()
-    window.mainloop()
 
+    military_count.main()
+
+    window.mainloop()
 
 if __name__ == '__main__':
     main()
