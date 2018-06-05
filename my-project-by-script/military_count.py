@@ -1,20 +1,20 @@
 from tkinter import *
 from tkinter import font
-import sub_main
+import menu
 import tkinter.messagebox
 
 
 x_value = 400
 y_value = 480
 
-#window = Tk()
-#window.geometry("800x600+750+200")
+window = Tk()
+window.geometry("800x600+750+200")
 
 army_case = 0 # 1번 육군 2번 해군 3번 공군 4번 해병대 5번 의경
 
 def InitTopText():
-    TempFont = font.Font(sub_main.window, size = 20, weight = 'bold', family = 'Consloas')
-    MainText = Label(sub_main.window, font = TempFont, text = "[ 군 전역일 계산 ]")
+    TempFont = font.Font(window, size = 20, weight = 'bold', family = 'Consloas')
+    MainText = Label(window, font = TempFont, text = "[ 군 전역일 계산 ]")
     MainText.pack()
     MainText.place(x=300, y = 10)
 
@@ -167,34 +167,34 @@ def Clear():
 
 def enter_case():
     global e1, e2, e3
-    l1 = Label(sub_main.window, text="입대년도을  입력하세요.", font='helvetica 10 italic')
+    l1 = Label(window, text="입대년도을  입력하세요.", font='helvetica 10 italic')
     l1.place(x= x_value - 350, y = y_value - 330)
 
-    e1 = Entry(sub_main.window)
+    e1 = Entry(window)
     e1.place(x= x_value - 200,  y=y_value - 330)
 
-    l2 = Label(sub_main.window, text="입  대  월을  입력하세요.", font='helvetica 10 italic')
+    l2 = Label(window, text="입  대  월을  입력하세요.", font='helvetica 10 italic')
     l2.place(x=x_value - 350, y=y_value - 300)
 
-    e2 = Entry(sub_main.window)
+    e2 = Entry(window)
     e2.place(x=x_value - 200, y=y_value - 300)
 
-    l3 = Label(sub_main.window, text="입  대  일을  입력하세요.", font='helvetica 10 italic')
+    l3 = Label(window, text="입  대  일을  입력하세요.", font='helvetica 10 italic')
     l3.place(x=x_value - 350, y= y_value - 270)
 
-    e3 = Entry(sub_main.window)
+    e3 = Entry(window)
     e3.place(x=x_value - 200, y=y_value - 270)
 
 
 def enter_case1():
     global e4
-    b1 = Button(sub_main.window, text='확인', command=Plus_day)
+    b1 = Button(window, text='확인', command=Plus_day)
     b1.place(x=x_value - 150, y=y_value - 245)
 
-    l4 = Label(sub_main.window, text="입대일을 확인하세요.", font='helvetica 11 italic')
+    l4 = Label(window, text="입대일을 확인하세요.", font='helvetica 11 italic')
     l4.place(x=x_value - 350, y=y_value - 210)
 
-    e4 = Entry(sub_main.window)
+    e4 = Entry(window)
     e4.place(x=x_value - 180, y= y_value - 210)
     e4['bg'] = "pink"
 
@@ -205,27 +205,27 @@ def picture_mili():
     global stay_army
 
     photo = PhotoImage(file="국방부.gif")  # 디폴트 이미지 파일
-    imageLabel = Label(sub_main.window, image=photo)
+    imageLabel = Label(window, image=photo)
     imageLabel.configure(image = photo)
     imageLabel.image = photo
     imageLabel.place(x= 400, y = 100)
 
-    select_army = Label(sub_main.window, text = "소속 - 육군 / 해군 / 공군 / 해병대" )
+    select_army = Label(window, text = "소속 - 육군 / 해군 / 공군 / 해병대" )
     select_army.place(x = 80, y = 85)
 
-    inputBox = Entry(sub_main.window)
+    inputBox = Entry(window)
     inputBox.place(x = 80, y = 110)
 
-    button = Button(sub_main.window, text = '클릭', command = change_image)
+    button = Button(window, text = '클릭', command = change_image)
     button.place(x = 230, y = 106)
 
-    stay_army = Entry(sub_main.window)
+    stay_army = Entry(window)
     stay_army.place(x = 600, y = 70)
 
 
 def enter_case2():
     global e5
-    b1 = Button(sub_main.window, text='초기화', command=Clear)
+    b1 = Button(window, text='초기화', command=Clear)
     b1.place(x=x_value - 100, y=y_value - 245)
 
 
@@ -236,34 +236,34 @@ def enter_result():
     global result3_e
     global result4_e
 
-    result1 = Label(sub_main.window, text="일병 예정일", font='helvetica 11 italic')
+    result1 = Label(window, text="일병 예정일", font='helvetica 11 italic')
     result1.place(x=x_value-300, y=y_value-160)
 
-    result1_e = Entry(sub_main.window)
+    result1_e = Entry(window)
     result1_e.place(x=x_value - 180, y=y_value - 160)
     result1_e['bg'] = "yellow"
 
     # 일병 진급일
-    result2 = Label(sub_main.window, text="상병 진급일", font='helvetica 11 italic')
+    result2 = Label(window, text="상병 진급일", font='helvetica 11 italic')
     result2.place(x=x_value-300, y=y_value - 130)
 
-    result2_e = Entry(sub_main.window)
+    result2_e = Entry(window)
     result2_e.place(x=x_value - 180, y=y_value - 130)
     result2_e['bg'] = "yellow"
 
     # 상병 진급일
-    result3 = Label(sub_main.window, text="병장 진급일", font='helvetica 11 italic')
+    result3 = Label(window, text="병장 진급일", font='helvetica 11 italic')
     result3.place(x=x_value - 300, y=y_value - 100)
 
-    result3_e = Entry(sub_main.window)
+    result3_e = Entry(window)
     result3_e.place(x=x_value - 180, y=y_value - 100)
     result3_e['bg'] = "yellow"
 
     # 병장 진급일
-    result4 = Label(sub_main.window, text="전역 예정일", font='helvetica 11 italic')
+    result4 = Label(window, text="전역 예정일", font='helvetica 11 italic')
     result4.place(x=x_value - 300, y=y_value - 70)
 
-    result4_e = Entry(sub_main.window)
+    result4_e = Entry(window)
     result4_e.place(x=x_value- 180, y=y_value- 70)
     result4_e['bg'] = "yellow"
 
@@ -296,7 +296,7 @@ def change_image():
 
 
 def next_button():
-    next_button = Button(sub_main.window, text='이전화면')
+    next_button = Button(window, text='이전화면')
     next_button.place(x = 310, y = 450)
 
 
@@ -306,7 +306,7 @@ def create_world():
     enter_case()  # 년 월 일 입력
     enter_case1() # 버튼 - 확인 / 출력
     enter_case2() # 버튼 - 초기화
-    picture_mili() # 사진 넣기
+    #picture_mili() # 사진 넣기
     enter_result() # 결과 창
     next_button() # 다음으로 넘어가기
 
@@ -314,7 +314,7 @@ def create_world():
 
 def main():
     create_world()
-    #sub_main.window.mainloop()
+    window.mainloop()
 
 
 if __name__ == '__main__':
