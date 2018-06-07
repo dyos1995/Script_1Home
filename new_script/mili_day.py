@@ -1,3 +1,10 @@
+import platform
+import os
+if platform.architecture()[0] == '32bit':
+    os.environ["PYSDL2_DLL_PATH"] = "./SDL2/x86"
+else:
+    os.environ["PYSDL2_DLL_PATH"] = "./SDL2/x64"
+
 from tkinter import *
 from tkinter import font
 import tkinter.messagebox
@@ -340,11 +347,11 @@ def RenderText_Rend():
 def spend_data():
     global Datalist
     print("입력")
-
     Datalist = Pasing_mili.Search_item(str(m1e.get()))
 
     if (len(Datalist) != 0):
         print("데이터 출력")
+        RenderText.delete("1.0", END)
         for i in range(len(Datalist)):
             RenderText.insert(INSERT, "---------------------------")
             RenderText.insert(INSERT, "\n")
@@ -392,6 +399,7 @@ def InitTopText_pasing_2():
 
 def spend_data_1():
     naver_data = naver_api.Search_txt(str(m2e.get()))
+    RenderText_2.delete("1.0", END)
     for i in range (len(naver_data)):
         RenderText_2.insert(INSERT, "--------------")
         RenderText_2.insert(INSERT,"\n")
@@ -410,6 +418,7 @@ def spend_data_1():
         RenderText_2.insert(INSERT, "--------------")
         RenderText_2.insert(INSERT,"\n\n")
 
+
 def enter_mili_date_3():
     global m2e
     m2 = Label(window, text = "지역명을 작성해주세요")
@@ -420,6 +429,7 @@ def enter_mili_date_3():
 
     m2b = Button(window, text = "완료",command = spend_data_1)
     m2b.place(x = x_value_1+550, y = y_value_1+15)
+
 
 def RenderText_Rend_2():
     global RenderText_2
