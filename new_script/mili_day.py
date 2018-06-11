@@ -178,19 +178,21 @@ def Clear():
 
 def enter_case():
     global e1, e2, e3
-    l1 = Label(window, text="입대년도을  입력하세요.", font='helvetica 10 italic')
+    font1 = font.Font(window, size=10, weight="bold", family="맑은 고딕")
+
+    l1 = Label(window, text="입대 년도을  입력하세요.", font=font1)
     l1.place(x= x_value - 350, y = y_value - 330)
 
     e1 = Entry(window)
     e1.place(x= x_value - 200,  y=y_value - 330)
 
-    l2 = Label(window, text="입  대  월을  입력하세요.", font='helvetica 10 italic')
+    l2 = Label(window, text="입  대  월을  입력하세요.", font=font1)
     l2.place(x=x_value - 350, y=y_value - 300)
 
     e2 = Entry(window)
     e2.place(x=x_value - 200, y=y_value - 300)
 
-    l3 = Label(window, text="입  대  일을  입력하세요.", font='helvetica 10 italic')
+    l3 = Label(window, text="입  대  일을  입력하세요.", font=font1)
     l3.place(x=x_value - 350, y= y_value - 270)
 
     e3 = Entry(window)
@@ -198,11 +200,12 @@ def enter_case():
 
 
 def enter_case1():
+    font2 = font.Font(window, size=10, weight="bold", family="맑은 고딕")
     global e4
     b1 = Button(window, text='확인', command=Plus_day)
     b1.place(x=x_value - 150, y=y_value - 245)
 
-    l4 = Label(window, text="입대일을 확인하세요.", font='helvetica 11 italic')
+    l4 = Label(window, text="입대일을 확인하세요.", font=font2)
     l4.place(x=x_value - 350, y=y_value - 210)
 
     e4 = Entry(window)
@@ -246,8 +249,8 @@ def enter_result():
     global result2_e
     global result3_e
     global result4_e
-
-    result1 = Label(window, text="일병 예정일", font='helvetica 11 italic')
+    font3 = font.Font(window, size=11, weight="bold", family="한컴 윤고딕 240")
+    result1 = Label(window, text="일병 예정일", font=font3)
     result1.place(x=x_value-300, y=y_value-160)
 
     result1_e = Entry(window)
@@ -255,7 +258,7 @@ def enter_result():
     result1_e['bg'] = "yellow"
 
     # 일병 진급일
-    result2 = Label(window, text="상병 진급일", font='helvetica 11 italic')
+    result2 = Label(window, text="상병  진급일", font=font3)
     result2.place(x=x_value-300, y=y_value - 130)
 
     result2_e = Entry(window)
@@ -263,7 +266,7 @@ def enter_result():
     result2_e['bg'] = "yellow"
 
     # 상병 진급일
-    result3 = Label(window, text="병장 진급일", font='helvetica 11 italic')
+    result3 = Label(window, text="병장  진급일", font=font3)
     result3.place(x=x_value - 300, y=y_value - 100)
 
     result3_e = Entry(window)
@@ -271,7 +274,7 @@ def enter_result():
     result3_e['bg'] = "yellow"
 
     # 병장 진급일
-    result4 = Label(window, text="전역 예정일", font='helvetica 11 italic')
+    result4 = Label(window, text="전역  예정일", font=font3)
     result4.place(x=x_value - 300, y=y_value - 70)
 
     result4_e = Entry(window)
