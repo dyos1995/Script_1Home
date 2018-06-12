@@ -11,6 +11,8 @@ import tkinter.messagebox
 import Pasing_mili
 import naver_api
 
+stay_army = None
+
 x_value = 400
 y_value = 480
 
@@ -215,7 +217,6 @@ def enter_case1():
 
 def picture_mili():
     global imageLabel
-    global inputBox
     global stay_army
 
     photo = PhotoImage(file="국방부.gif")  # 디폴트 이미지 파일
@@ -224,17 +225,34 @@ def picture_mili():
     imageLabel.image = photo
     imageLabel.place(x= 400, y = 100)
 
-    select_army = Label(window, text = "소속 - 육군 / 해군 / 공군 / 해병대" )
-    select_army.place(x = 80, y = 85)
-
-    inputBox = Entry(window)
-    inputBox.place(x = 80, y = 110)
-
-    button = Button(window, text = '클릭', command = change_image)
-    button.place(x = 230, y = 106)
-
     stay_army = Entry(window)
-    stay_army.place(x = 600, y = 70)
+    stay_army.place(x=600, y=70)
+
+
+    button1 = Button(window, text = '육군', command = call_1) # 육군 해군 공군 해병대
+    button1.place(x = 80, y = 106)
+
+    button2 = Button(window, text='해군', command=call_2)  # 육군 해군 공군 해병대
+    button2.place(x=140, y=106)
+
+    button3 = Button(window, text='공군', command=call_3)  # 육군 해군 공군 해병대
+    button3.place(x=200, y=106)
+
+    button4 = Button(window, text='해병대', command=call_4)  # 육군 해군 공군 해병대
+    button4.place(x=260, y=106)
+
+def call_1():
+    change_image(1)
+
+def call_2():
+    change_image(2)
+
+def call_3():
+    change_image(3)
+
+def call_4():
+    change_image(4)
+
 
 
 def enter_case2():
@@ -281,30 +299,38 @@ def enter_result():
     result4_e.place(x=x_value- 180, y=y_value- 70)
     result4_e['bg'] = "yellow"
 
-def change_image():
-    global army_case
-    path = inputBox.get()
-    if(inputBox.get() == ''):
-        inputBox.insert(0, "작성 오류")
 
-    if(inputBox.get() == "공군"):
-        army_case = 3
+def change_image(set_item):
+    global army_case
+    global text_lab
+    print("실행중")
+    if set_item == 1:
+        army_case = 1
+        text_lab = "육군.gif"
+        stay_army.insert(0, "21개월")
+
+    elif set_item == 4:
+        stay_army.delete(0, 10)
+        army_case = 1
+        text_lab = "해병대.gif"
+        stay_army.insert(0, "21개월")
+
+    elif set_item == 3:
         stay_army.delete(0,10)
+        text_lab = "공군.gif"
         stay_army.insert(0,"24개월")
 
-    elif(inputBox.get() == "해군"):
+    elif set_item == 2:
+        stay_army.delete(0, 10)
         army_case = 2
-        stay_army.delete(0,10)
+        text_lab = "해군.gif"
         stay_army.insert(0, "23개월")
 
     else:
-        army_case = 1
-        stay_army.delete(0,10)
-        stay_army.insert(0, "21개월")
+        stay_army.insert(0, "작성 오류")
 
 
-    path += '.gif'
-    imag = PhotoImage(file = path)
+    imag = PhotoImage(file = text_lab)
     imageLabel.configure(image=imag)
     imageLabel.image = imag
 
